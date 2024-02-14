@@ -1,18 +1,25 @@
-{% extends "OpenTU/header.html" %}
-
+{% extends "OpenTU/header.html" %} 
 {% load crispy_forms_tags %} 
-
 {% block content %}
 
 <style>
-  body {
-    background-color: #eee;
+  .is-login-page {
+    color: rgb(0, 0, 0);
+    font-weight: 500;
   }
 
   .gradient-custom {
-    background: #e53935;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #e35d5b, #e53935);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #e35d5b, #e53935); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #e53935; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #e35d5b,
+      #e53935
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #e35d5b,
+      #e53935
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 </style>
 
@@ -20,7 +27,10 @@
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card gradient-custom text-white" style="border-radius: 2rem">
+        <div
+          class="card gradient-custom text-white"
+          style="border-radius: 2rem"
+        >
           <div class="card-body p-5 text-center">
             <div class="mb-md-5 mt-md-4 pb-2">
               <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
@@ -30,7 +40,9 @@
               <form method="POST">
                 {% csrf_token %}
                 <div class="form-outline form-white mb-4">
-                  <label class="form-label" for="username_input">Student ID</label>
+                  <label class="form-label" for="username_input"
+                    >Student ID</label
+                  >
                   <input
                     type="text"
                     id="username_input"
@@ -40,7 +52,9 @@
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                  <label class="form-label" for="password_input">Password</label>
+                  <label class="form-label" for="password_input"
+                    >Password</label
+                  >
                   <input
                     type="password"
                     id="password_input"
@@ -49,7 +63,10 @@
                   />
                 </div>
 
-                <button class="btn btn-outline-light btn-lg px-5 mt-3" type="submit">
+                <button
+                  class="btn btn-outline-light btn-lg px-5 mt-3"
+                  type="submit"
+                >
                   Login
                 </button>
               </form>
