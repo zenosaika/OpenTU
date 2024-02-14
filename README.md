@@ -1,5 +1,5 @@
 # OpenTU
-### This is a project of SF221 (Software Process)
+### "This is a group project of SF221 (Software Process)"
 
 ### Database Design
 - User
@@ -7,13 +7,15 @@
     - firstname
     - lastname
     - student_id
-    - list of enrolled courses
+    - email
+    - image
+    - enrolled_courses (list of enrolled course)
 - Course
     - course_id
     - short_name
     - full_name
     - credit
     - section
-    - day
+    - course_day
     - start_time
     - duration
