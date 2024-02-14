@@ -17,5 +17,5 @@
     - credit
     - section
     - course_day
-    - start_time
-    - duration
+    - class_start
+    - class_finish
