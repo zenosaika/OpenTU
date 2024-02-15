@@ -8,7 +8,10 @@ class Student(models.Model):
     last_name = models.CharField(max_length=255)
     student_id = models.CharField(max_length=10)
     email = models.EmailField()
+    phone = models.CharField(max_length=12)
     image = models.ImageField(blank=True)
+    faculty = models.CharField(max_length=255)
+    department = models.CharField(max_length=255)
     enrolled_courses = models.ManyToManyField(Course, blank=True)
 
     def __str__(self):
