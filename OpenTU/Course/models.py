@@ -18,6 +18,7 @@ class Course(models.Model):
     class_day = models.CharField(max_length=1, choices=DAYS_OF_WEEK)
     class_start = models.TimeField()
     class_finish = models.TimeField()
+    room = models.CharField(max_length=10)
 
     def __str__(self):
         return f'{self.short_name}_{self.section}'

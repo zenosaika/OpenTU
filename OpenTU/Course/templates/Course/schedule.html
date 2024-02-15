@@ -1,0 +1,78 @@
+{% extends "OpenTU/header.html" %} 
+{% block content %}
+
+<style>
+  .is-schedule-page {
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+  }
+
+  .order-card {
+    color: #fff;
+  }
+
+  .bg-c-blue {
+    background: linear-gradient(45deg, #4099ff, #73b4ff);
+  }
+
+  .bg-c-green {
+    background: linear-gradient(45deg, #2ed8b6, #59e0c5);
+  }
+
+  .bg-c-yellow {
+    background: linear-gradient(45deg, #ffb64d, #ffcb80);
+  }
+
+  .bg-c-pink {
+    background: linear-gradient(45deg, #ff5370, #ff869a);
+  }
+
+  .card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .card .card-block {
+    padding: 25px;
+  }
+
+  .order-card i {
+    font-size: 26px;
+  }
+
+  .f-left {
+    float: left;
+  }
+
+  .f-right {
+    float: right;
+  }
+</style>
+
+<div class="container py-5">
+<h2>Course Schedule</h2>
+  <div class="row py-3">
+
+    {% for course in enrolled_courses %}
+    <div class="col-md-4 col-xl-3">
+      <div class="card bg-c-pink order-card">
+        <div class="card-block">
+          <h6 class="mb-20">{{ course.full_name }}</h6>
+          <h2 class="text-right">
+            <span>{{ course.short_name }}</span>
+          </h2>
+          <p class="mb-0">{{ course.schedule }}<span class="f-right">{{ course.section }}</span></p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+{% endblock %}
