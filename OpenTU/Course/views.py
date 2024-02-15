@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from User.models import Student
 
 DAYS_OF_WEEK = {
@@ -11,6 +12,7 @@ DAYS_OF_WEEK = {
     '6': 'SUN',
 }
 
+@login_required
 def schedule_request(request):
     student = Student.objects.filter(user=request.user)
     context = {'enrolled_courses': []}

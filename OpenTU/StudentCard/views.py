@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from User.models import Student
 
 import qrcode
@@ -12,6 +13,7 @@ def gen_qrcode_by(id):
     data64 = base64.b64encode(data.getvalue()).decode('utf-8')
     return data64
 
+@login_required
 def idcard_request(request):
     student = Student.objects.filter(user=request.user)
     context = {}

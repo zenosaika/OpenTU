@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from User.models import Student
 
+@login_required
 def dashboard_request(request):
     student = Student.objects.filter(user=request.user)
     context = {}
