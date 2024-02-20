@@ -69,14 +69,58 @@
     background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
     color: #fff;
   }
+
+  .card-box {
+    padding: 20px;
+    border: solid;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    background-color: #ffffff;
+  }
+
+  .social-links li a {
+    border-radius: 50%;
+    color: rgba(121, 121, 121, 0.8);
+    display: inline-block;
+    height: 30px;
+    line-height: 27px;
+    border: 2px solid rgba(121, 121, 121, 0.5);
+    text-align: center;
+    width: 30px;
+  }
+
+  .social-links li a:hover {
+    color: #797979;
+    border: 2px solid #797979;
+  }
+  .thumb-lg {
+    height: 100px;
+    width: 100px;
+  }
+  .img-thumbnail {
+    padding: 0.25rem;
+    background-color: #fff;
+    /* border: 1px solid #dee2e6; */
+    border-radius: 0.25rem;
+    max-width: 100%;
+    height: auto;
+  }
+  .text-pink {
+    color: #ff679b !important;
+  }
+  .btn-rounded {
+    border-radius: 2em;
+  }
+  .text-muted {
+    color: #98a6ad !important;
+  }
+  h4 {
+    line-height: 22px;
+    font-size: 18px;
+  }
 </style>
 
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
-  integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
-  crossorigin="anonymous"
-/>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
 <div class="container pt-5 d-flex justify-content-center">
   <div class="row" style="width: 70%">
@@ -84,14 +128,16 @@
       <div class="card l-bg-cherry">
         <div class="card-statistic-3 p-4">
           <div class="card-icon card-icon-large">
-            <i class="fas fa-shopping-cart"></i>
+            <!-- <i class="fas fa-shopping-cart"></i> -->
           </div>
           <div class="mb-4">
             <h5 class="card-title mb-0">Electric Cost</h5>
           </div>
           <div class="row align-items-center mb-2 d-flex">
             <div class="col-8">
-              <h2 class="d-flex align-items-center mb-0">3,243</h2>
+              <h2 class="d-flex align-items-center mb-0">
+                {{ electric_cost }} ฿
+              </h2>
             </div>
             <div class="col-4 text-right">
               <span>12.5% <i class="fa fa-arrow-up"></i></span>
@@ -115,14 +161,14 @@
       <div class="card l-bg-blue-dark">
         <div class="card-statistic-3 p-4">
           <div class="card-icon card-icon-large">
-            <i class="fas fa-users"></i>
+            <!-- <i class="fas fa-users"></i> -->
           </div>
           <div class="mb-4">
             <h5 class="card-title mb-0">Water Cost</h5>
           </div>
           <div class="row align-items-center mb-2 d-flex">
             <div class="col-8">
-              <h2 class="d-flex align-items-center mb-0">15.07k</h2>
+              <h2 class="d-flex align-items-center mb-0">{{ water_cost }} ฿</h2>
             </div>
             <div class="col-4 text-right">
               <span>9.23% <i class="fa fa-arrow-up"></i></span>
@@ -142,6 +188,75 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="container pt-5 d-flex justify-content-center">
+  <div class="row" style="width: 70%">
+    <h3 class="pb-3">Your Roommates</h3>
+
+    {% for roommate in roommates %}
+    <div class="col-lg-4">
+      <div class="text-center card-box">
+        <div class="member-card pt-2 pb-2">
+          <div class="thumb-lg member-thumb mx-auto mb-3">
+            <img
+              src="{{ roommate.image.url }}"
+              class="rounded-circle img-thumbnail"
+              alt="profile-image"
+            />
+          </div>
+          <div class="">
+            <h4>{{ roommate.first_name}} {{ roommate.last_name }}</h4>
+            <p class="text-muted">{{ roommate.department }}</br>{{ roommate.faculty }}</p>
+          </div>
+          <ul class="social-links list-inline">
+            <li class="list-inline-item">
+              <a
+                title=""
+                data-placement="top"
+                data-toggle="tooltip"
+                class="tooltips"
+                href=""
+                data-original-title="Facebook"
+                ><i class="fa fa-facebook"></i
+              ></a>
+            </li>
+            <li class="list-inline-item">
+              <a
+                title=""
+                data-placement="top"
+                data-toggle="tooltip"
+                class="tooltips"
+                href=""
+                data-original-title="Twitter"
+                ><i class="fa fa-twitter"></i
+              ></a>
+            </li>
+            <li class="list-inline-item">
+              <a
+                title=""
+                data-placement="top"
+                data-toggle="tooltip"
+                class="tooltips"
+                href=""
+                data-original-title="Skype"
+                ><i class="fa fa-skype"></i
+              ></a>
+            </li>
+          </ul>
+          <button
+            type="button"
+            class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light"
+          >
+            Message Now
+          </button>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+
   </div>
 </div>
 
