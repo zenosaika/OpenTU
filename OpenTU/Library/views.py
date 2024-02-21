@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Book
 from User.models import Student
 from .forms import TransactionForm
@@ -10,6 +11,7 @@ def library_request(request):
     context = {'books': books}
     return render(request, 'Library/library.html', context)
 
+@login_required
 def borrow(request, id):
 
     if request.method == 'POST':

@@ -1,5 +1,4 @@
-{% extends "OpenTU/header.html" %} 
-{% block content %}
+{% extends "OpenTU/header.html" %} {% block content %}
 
 <style>
   .is-schedule-page {
@@ -27,6 +26,34 @@
     background: linear-gradient(45deg, #ff5370, #ff869a);
   }
 
+  .bg-sky {
+    background-color: #02c2c7 !important;
+}
+
+.bg-orange {
+    background-color: #e95601 !important;
+}
+
+.bg-green {
+    background-color: #5bbd2a !important;
+}
+
+.bg-yellow {
+    background-color: #f0d001 !important;
+}
+
+.bg-pink {
+    background-color: #ff48a4 !important;
+}
+
+.bg-purple {
+    background-color: #9d60ff !important;
+}
+
+.bg-lightred {
+    background-color: #ff5722 !important;
+}
+
   .card {
     border-radius: 5px;
     -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
@@ -52,26 +79,73 @@
   .f-right {
     float: right;
   }
+
+  .shadowbox {
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1),
+      0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1),
+      0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12),
+      0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
+  }
+
+  td {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    vertical-align: middle;
+  }
+
+  .bg-green {
+    background-color: #5bbd2a !important;
+  }
+
+  .border-radius-5 {
+    border-radius: 5px;
+    padding: 0px;
+    min-width: 100%;
+  }
+
+  .line {
+    background-color: #ff869a;
+    height: 14px;
+  }
 </style>
 
-<div class="container py-5">
-<h2>Course Schedule</h2>
-  <div class="row py-3">
+<div class="container py-5" style="width: 80%">
+  <h3 class="pb-3">Course Schedule</h3>
+  <table class="table shadowbox" style="max-width: 700px">
+    <tbody>
+      {% for day in days %}
+        <th style="width: 65px !important;">{{ day.day }}</th>
+        {% for slot in day.slot %} 
+            {% if slot %}
+            <td><div class="line {{slot.color}}">&nbsp;</div></td>
+            {% else %}
+            <td>&nbsp;</td>
+            {% endif %} 
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
+  <h3 class="pt-4">Enrolled Courses</h3>
+  <div class="row pt-3">
     {% for course in enrolled_courses %}
     <div class="col-md-4 col-xl-3">
-      <div class="card bg-c-pink order-card">
+      <div class="card order-card {{ course.color }}">
         <div class="card-block">
           <h6 class="mb-20">{{ course.full_name }}</h6>
           <h2 class="text-right">
             <span>{{ course.short_name }}</span>
           </h2>
-          <p class="mb-0">{{ course.schedule }}<span class="f-right">{{ course.section }}</span></p>
+          <p class="mb-0">
+            {{ course.schedule }}<span class="f-right"
+              >{{ course.section }}</span
+            >
+          </p>
         </div>
       </div>
     </div>
     {% endfor %}
-
   </div>
 </div>
 
