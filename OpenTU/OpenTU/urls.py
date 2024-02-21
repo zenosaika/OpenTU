@@ -28,6 +28,7 @@ urlpatterns = [
     path('', include('Dashboard.urls'), name='dashboard'),
     path('', include('StudentCard.urls'), name='studentcard'),
     path('', include('Dorm.urls'), name='dorm'),
+    path('', include('Library.urls'), name='library'),
 ]
 
 if settings.DEBUG:

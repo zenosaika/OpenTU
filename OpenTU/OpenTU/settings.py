@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'Dashboard',
     'StudentCard',
     'Dorm',
+    'Library',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
