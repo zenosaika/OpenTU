@@ -30,6 +30,7 @@ urlpatterns = [
     path('', include('Dorm.urls'), name='dorm'),
     path('', include('Library.urls'), name='library'),
     path('', include('Transport.urls'), name='transport'),
+    path('', include('DigitalForm.urls'), name='digitalform'),
 ]
 
 if settings.DEBUG:

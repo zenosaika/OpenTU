@@ -1,0 +1,47 @@
+{% extends "OpenTU/header.html" %} 
+{% load crispy_forms_tags %} 
+{% block content %}
+
+<style>
+  .is-form-page {
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+  }
+
+  .gradient-custom {
+    background: #41295a;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #2F0743, #41295a);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #2F0743, #41295a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  }
+
+  .card {
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    margin-bottom: 30px;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1),
+      0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1),
+      0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12),
+      0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
+  }
+</style>
+
+<div class="container py-4">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card gradient-custom text-white" style="border-radius: 2rem">
+          <h3>OpenTU Digital Form</h3>
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %} {{ form|crispy }}
+            <button class="btn btn-outline-light" type="submit">Submit</button>
+            <a href="/dashboard" class="btn btn-outline-light">Close</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

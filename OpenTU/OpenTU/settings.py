@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'Dorm',
     'Library',
     'Transport',
+    'DigitalForm',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
