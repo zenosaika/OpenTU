@@ -16,7 +16,32 @@
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 
+  .form-card {
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    margin-bottom: 30px;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1),
+      0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1),
+      0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12),
+      0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
+  }
+
   .card {
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    margin-bottom: 30px;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1),
+      0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1),
+      0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12),
+      0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
+  }
+
+  .form-card {
     padding: 30px;
     background-color: #fff;
     border-radius: 10px;
@@ -31,9 +56,27 @@
 </style>
 
 <div class="container py-4">
-  <div class="row d-flex justify-content-center align-items-center h-100">
+  <div class="row d-flex justify-content-center align-items-center pt-5">
+
+    <div class="col-lg-3 mb-4 d-flex justify-content-center">
+      <div class="card" style="max-width: 250px;">
+        <img
+          src="{{ room.image.url }}"
+          alt=""
+          class="card-img-top image-fluid"
+          style="max-height: 250px;"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ room.name }}</h5>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          </p>
+        </div>
+      </div>
+    </div>
+
     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-      <div class="card gradient-custom text-white" style="border-radius: 2rem">
+      <div class="form-card gradient-custom text-white" style="border-radius: 2rem">
         <h3>Room Booking Online</h3>
         <form method="POST" enctype="multipart/form-data">
           {% csrf_token %} {{ form|crispy }}
@@ -42,6 +85,7 @@
         </form>
       </div>
     </div>
+
   </div>
 </div>
 

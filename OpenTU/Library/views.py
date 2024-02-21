@@ -78,7 +78,7 @@ def borrow(request, id):
             return redirect('/library')
     else:
         context = {
-            'book_id': id, 
+            'book': Book.objects.get(pk=id), 
             'form': BookTransactionForm()
         }
         return render(request, 'Library/borrow.html', context)
@@ -96,7 +96,7 @@ def book_room(request, id):
             return redirect('/library')
     else:
         context = {
-            'room_id': id, 
+            'room': Room.objects.get(pk=id),
             'form': RoomTransactionForm()
         }
         return render(request, 'Library/room_booking.html', context)
