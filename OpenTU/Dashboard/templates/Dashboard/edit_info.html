@@ -3,17 +3,10 @@
 
 <style>
   .gradient-custom {
-    background: #1e3c72; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to right,
-      #2a5298,
-      #1e3c72
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to right,
-      #2a5298,
-      #1e3c72
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #355C7D;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #C06C84, #6C5B7B, #355C7D);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #C06C84, #6C5B7B, #355C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   }
 
   .card {
@@ -34,11 +27,10 @@
   <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
       <div class="card gradient-custom text-white" style="border-radius: 2rem">
-        <h3>Borrow Book Online</h3>
+        <h3>Edit Your Information</h3>
         <form method="POST" enctype="multipart/form-data">
           {% csrf_token %} {{ form|crispy }}
-          <button class="btn btn-outline-light" type="submit">Submit</button>
-          <a href="/library" class="btn btn-outline-light">Close</a>
+          <button class="btn btn-outline-light" type="submit">Save</button>
         </form>
       </div>
     </div>

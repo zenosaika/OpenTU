@@ -13,7 +13,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f'Welcome {username}!')
-                return redirect('/')
+                return redirect('/dashboard')
         messages.error(request, 'Invalid username or password.')
     form = AuthenticationForm()
     return render(request, 'User/login.html', {'login_form':form})
