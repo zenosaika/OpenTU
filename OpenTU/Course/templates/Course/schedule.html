@@ -28,31 +28,31 @@
 
   .bg-sky {
     background-color: #02c2c7 !important;
-}
+  }
 
-.bg-orange {
+  .bg-orange {
     background-color: #e95601 !important;
-}
+  }
 
-.bg-green {
+  .bg-green {
     background-color: #5bbd2a !important;
-}
+  }
 
-.bg-yellow {
+  .bg-yellow {
     background-color: #f0d001 !important;
-}
+  }
 
-.bg-pink {
+  .bg-pink {
     background-color: #ff48a4 !important;
-}
+  }
 
-.bg-purple {
+  .bg-purple {
     background-color: #9d60ff !important;
-}
+  }
 
-.bg-lightred {
+  .bg-lightred {
     background-color: #ff5722 !important;
-}
+  }
 
   .card {
     border-radius: 5px;
@@ -109,43 +109,44 @@
   }
 </style>
 
-<div class="container py-5" style="width: 80%">
-  <h3 class="pb-3">Course Schedule</h3>
-  <table class="table shadowbox" style="max-width: 700px">
-    <tbody>
-      {% for day in days %}
-        <th style="width: 65px !important;">{{ day.day }}</th>
-        {% for slot in day.slot %} 
-            {% if slot %}
-            <td><div class="line {{slot.color}}">&nbsp;</div></td>
-            {% else %}
-            <td>&nbsp;</td>
-            {% endif %} 
+<div class="container d-flex justify-content-center">
+  <div class="row py-5" style="width: 90%">
+    <h3 class="pb-3">Course Schedule</h3>
+    <table class="table shadowbox ms-2" style="max-width: 700px;">
+      <tbody>
+        {% for day in days %}
+        <tr>
+          <th style="width: 65px !important">{{ day.day }}</th>
+          {% for slot in day.slot %} {% if slot %}
+          <td><div class="line {{slot.color}}">&nbsp;</div></td>
+          {% else %}
+          <td>&nbsp;</td>
+          {% endif %} {% endfor %}
+        </tr>
         {% endfor %}
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+      </tbody>
+    </table>
 
-  <h3 class="pt-4">Enrolled Courses</h3>
-  <div class="row pt-3">
-    {% for course in enrolled_courses %}
-    <div class="col-md-4 col-xl-3">
-      <div class="card order-card {{ course.color }}">
-        <div class="card-block">
-          <h6 class="mb-20">{{ course.full_name }}</h6>
-          <h2 class="text-right">
-            <span>{{ course.short_name }}</span>
-          </h2>
-          <p class="mb-0">
-            {{ course.schedule }}<span class="f-right"
-              >{{ course.section }}</span
-            >
-          </p>
+    <h3 class="pt-4">Enrolled Courses</h3>
+    <div class="row pt-3">
+      {% for course in enrolled_courses %}
+      <div class="col-md-4 col-xl-3">
+        <div class="card order-card {{ course.color }}">
+          <div class="card-block">
+            <h6 class="mb-20">{{ course.full_name }}</h6>
+            <h2 class="text-right">
+              <span>{{ course.short_name }}</span>
+            </h2>
+            <p class="mb-0">
+              {{ course.schedule }}<span class="f-right"
+                >{{ course.section }}</span
+              >
+            </p>
+          </div>
         </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
 </div>
 
