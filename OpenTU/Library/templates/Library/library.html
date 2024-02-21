@@ -17,6 +17,10 @@
       0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12),
       0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
   }
+
+  .text-muted {
+    color: #98a6ad !important;
+  }
 </style>
 
 <div class="container pt-4 d-flex justify-content-center">
@@ -37,7 +41,11 @@
           <p class="card-text">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit.
           </p>
-          <a href="" class="btn btn-outline-success btn-sm">Borrow this book</a>
+          {% if book.is_available %}
+          <a href="/borrow/{{ book.id }}" class="btn btn-outline-success btn-sm">Borrow this book</a>
+          {% else %}
+          <p class="text-muted">This book is not available.</p>
+          {% endif %}
         </div>
       </div>
     </div>

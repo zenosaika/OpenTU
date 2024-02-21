@@ -29,6 +29,7 @@ urlpatterns = [
     path('', include('StudentCard.urls'), name='studentcard'),
     path('', include('Dorm.urls'), name='dorm'),
     path('', include('Library.urls'), name='library'),
+    path('', include('Transport.urls'), name='transport'),
 ]
 
 if settings.DEBUG:
