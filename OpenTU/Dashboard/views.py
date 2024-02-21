@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from User.models import Student
 from User.forms import StudentForm
+import datetime
+
 
 @login_required
 def dashboard_request(request):
@@ -9,10 +11,21 @@ def dashboard_request(request):
     context = {}
     if student:
         context['student'] = student[0]
-    else:
-        # create new Student object for this user
-        # go to new Student form
-        ...
+
+        # upcoming events
+        events = []
+        today = datetime.datetime.today() + datetime.timedelta(hours=7)
+        today_day = (today).weekday()
+        for course in student[0].enrolled_courses.all():
+            if int(course.class_day) == today_day:
+                events.append({
+                    'description': f'{course.short_name} @ {course.room}',
+                    'time': course.class_start.strftime('Today %H:%M'),
+                    'compareval': datetime.datetime.combine(datetime.date(year=2003, month=7, day=10), course.class_start)
+                })
+
+        context['events'] = sorted(events, key=lambda event: event['compareval'])
+            
     return render(request, 'Dashboard/dashboard.html', context)
 
 @login_required
