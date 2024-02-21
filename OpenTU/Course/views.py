@@ -26,7 +26,7 @@ COLOR_CLASSES = [
 @login_required
 def schedule_request(request):
     student = Student.objects.filter(user=request.user)
-    context = {'enrolled_courses': []}
+    context = {}
     if student:
         enrolled_courses = student[0].enrolled_courses.all()
         for course in enrolled_courses:
@@ -57,5 +57,26 @@ def schedule_request(request):
         color_index += 1
 
     context['days'] = days
+
+    # examination
+    exams = []
+    for course in enrolled_courses:
+        midterm = 'Not Available'
+        final = 'Not Available'
+
+        if course.midterm_exam_date:
+            midterm_finish_datetime = course.midterm_exam_date + datetime.timedelta(hours=course.midterm_duration_hr)
+            midterm = f"{course.midterm_exam_date.strftime('%d %b %Y (%H:%M -')} {midterm_finish_datetime.strftime('%H:%M')})"
+        if course.final_exam_date:
+            final_finish_datetime = course.final_exam_date + datetime.timedelta(hours=course.final_duration_hr)
+            final = f"{course.final_exam_date.strftime('%d %b %Y (%H:%M -')} {final_finish_datetime.strftime('%H:%M')})"
+
+        exams.append({
+            'course_name': course.short_name,
+            'midterm': midterm,
+            'final': final,
+        })
+
+    context['exams'] = exams
 
     return render(request, "Course/schedule.html", context)

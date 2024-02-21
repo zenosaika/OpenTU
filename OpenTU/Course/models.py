@@ -19,6 +19,10 @@ class Course(models.Model):
     class_start = models.TimeField()
     class_finish = models.TimeField()
     room = models.CharField(max_length=10)
+    midterm_exam_date = models.DateTimeField(blank=True, null=True)
+    midterm_duration_hr = models.FloatField(default=2.0)
+    final_exam_date = models.DateTimeField(blank=True, null=True)
+    final_duration_hr = models.FloatField(default=3.0)
 
     def __str__(self):
         return f'{self.short_name}_{self.section}'
