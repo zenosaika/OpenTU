@@ -1,21 +1,10 @@
 # OpenTU
-### "This is a group project of SF221 (Software Process)"
 
-### Database Design
-- User
-    - user_id
-    - firstname
-    - lastname
-    - student_id
-    - email
-    - image
-    - enrolled_courses (list of enrolled course)
-- Course
-    - course_id
-    - short_name
-    - full_name
-    - credit
-    - section
-    - course_day
-    - class_start
-    - class_finish
+- [Visit Our OpenTU WebApp](https://open-tu.fly.dev)
+
+### Presentation
+<img src="https://github.com/zenosaika/OpenTU/blob/main/presentation/1.jpg"><br>
+<img src="https://github.com/zenosaika/OpenTU/blob/main/presentation/2.jpg"><br>
+<img src="https://github.com/zenosaika/OpenTU/blob/main/presentation/3.jpg"><br>
+<img src="https://github.com/zenosaika/OpenTU/blob/main/presentation/4.jpg"><br>
+<img src="https://github.com/zenosaika/OpenTU/blob/main/presentation/13.jpg"><br>
