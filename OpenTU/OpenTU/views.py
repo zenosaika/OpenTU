@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 def homepage(request):
-    return render(request, 'OpenTU/homepage.html')
+    return redirect('/dashboard')
