@@ -124,11 +124,17 @@
   }
 </style>
 
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  rel="stylesheet"
+/>
 
 <div class="container pt-5 d-flex justify-content-center">
   <div class="row" style="width: 80%">
-    <h3 class="pb-3">Your Room <span style="color: #696969;">({{ room.room_number }})</span> Dashboard</h3>
+    <h3 class="pb-3">
+      Your Room
+      <span style="color: #696969">({{ room.room_number }})</span> Dashboard
+    </h3>
     <div class="col-xl-4 col-lg-4">
       <div class="card l-bg-cherry">
         <div class="card-statistic-3 p-4">
@@ -144,9 +150,6 @@
                 {{ rental_cost }} ฿
               </h2>
             </div>
-            <!-- <div class="col-4 text-right">
-              <span>12.5% <i class="fa fa-arrow-up"></i></span>
-            </div> -->
           </div>
           <div class="progress mt-1" data-height="8" style="height: 8px">
             <div
@@ -165,9 +168,7 @@
     <div class="col-xl-4 col-lg-4">
       <div class="card l-bg-orange-dark">
         <div class="card-statistic-3 p-4">
-          <div class="card-icon card-icon-large">
-            <!-- <i class="fas fa-shopping-cart"></i> -->
-          </div>
+          <div class="card-icon card-icon-large"></div>
           <div class="mb-4">
             <h5 class="card-title mb-0">Electrical Cost</h5>
           </div>
@@ -177,9 +178,6 @@
                 {{ electric_cost }} ฿
               </h2>
             </div>
-            <!-- <div class="col-4 text-right">
-              <span>12.5% <i class="fa fa-arrow-up"></i></span>
-            </div> -->
           </div>
           <div class="progress mt-1" data-height="8" style="height: 8px">
             <div
@@ -198,9 +196,7 @@
     <div class="col-xl-4 col-lg-4">
       <div class="card l-bg-blue-dark">
         <div class="card-statistic-3 p-4">
-          <div class="card-icon card-icon-large">
-            <!-- <i class="fas fa-users"></i> -->
-          </div>
+          <div class="card-icon card-icon-large"></div>
           <div class="mb-4">
             <h5 class="card-title mb-0">Water Cost</h5>
           </div>
@@ -208,9 +204,6 @@
             <div class="col-8">
               <h2 class="d-flex align-items-center mb-0">{{ water_cost }} ฿</h2>
             </div>
-            <!-- <div class="col-4 text-right">
-              <span>9.23% <i class="fa fa-arrow-up"></i></span>
-            </div> -->
           </div>
           <div class="progress mt-1" data-height="8" style="height: 8px">
             <div
@@ -246,7 +239,9 @@
           </div>
           <div class="">
             <h4>{{ roommate.first_name}} {{ roommate.last_name }}</h4>
-            <p class="text-muted">{{ roommate.department }}</br>{{ roommate.faculty }}</p>
+            <p class="text-muted">
+              {{ roommate.department }}<br />{{ roommate.faculty }}
+            </p>
           </div>
           <ul class="social-links list-inline">
             <li class="list-inline-item">
@@ -272,18 +267,10 @@
               ></a>
             </li>
           </ul>
-          <!-- <button
-            type="button"
-            class="btn btn-dark mt-3 btn-rounded waves-effect w-md waves-light"
-          >
-            Message Now
-          </button> -->
         </div>
       </div>
     </div>
     {% endfor %}
-
-
   </div>
 </div>
 

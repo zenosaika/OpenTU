@@ -1,5 +1,4 @@
-{% extends "OpenTU/header.html" %} 
-{% load crispy_forms_tags %} 
+{% extends "OpenTU/header.html" %} {% load crispy_forms_tags %} 
 {% block content %}
 
 <style>
@@ -9,10 +8,17 @@
   }
 
   .gradient-custom {
-    background: #41295a;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to top, #2F0743, #41295a);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to top, #2F0743, #41295a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: #41295a; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to top,
+      #2f0743,
+      #41295a
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to top,
+      #2f0743,
+      #41295a
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 
   .shadowbox {
@@ -37,40 +43,36 @@ background: linear-gradient(to top, #2F0743, #41295a); /* W3C, IE 10+/ Edge, Fir
 </style>
 
 <div class="container py-4">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5 p-4 pb-1">
-        <div class="card gradient-custom text-white" style="border-radius: 2rem">
-          <h3>OpenTU Digital Form</h3>
-          <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %} {{ form|crispy }}
-            <button class="btn btn-outline-light" type="submit">Submit</button>
-            <!-- <a href="/digital_form" class="btn btn-outline-light">Close</a> -->
-          </form>
-        </div>
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5 p-4 pb-1">
+      <div class="card gradient-custom text-white" style="border-radius: 2rem">
+        <h3>OpenTU Digital Form</h3>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %} {{ form|crispy }}
+          <button class="btn btn-outline-light" type="submit">Submit</button>
+          <!-- <a href="/digital_form" class="btn btn-outline-light">Close</a> -->
+        </form>
       </div>
-
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5 p-4">
-        <h3 class="pb-2">Your Report History</h3>
-        <table class="table shadowbox ms-2" style="max-width: 700px;">
-            <thead>
-              <th>Status</th>
-              <th>Report Topic</th>
-            </thead>
-            <tbody>
-              {% for report in reports %}
-              <tr>
-                <th>{{ report.status }}</th>
-                <td>{{ report.header }}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-      </div>
-
     </div>
-</div>
 
-  
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5 p-4">
+      <h3 class="pb-2">Your Report History</h3>
+      <table class="table shadowbox ms-2" style="max-width: 700px">
+        <thead>
+          <th>Status</th>
+          <th>Report Topic</th>
+        </thead>
+        <tbody>
+          {% for report in reports %}
+          <tr>
+            <th>{{ report.status }}</th>
+            <td>{{ report.header }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 {% endblock %}

@@ -44,14 +44,13 @@
 
 <div class="container py-4">
   <div class="row d-flex justify-content-center align-items-center pt-5">
-
     <div class="col-lg-3 mb-4 d-flex justify-content-center">
-      <div class="card" style="max-width: 250px;">
+      <div class="card" style="max-width: 250px">
         <img
           src="{{ book.image.url }}"
           alt=""
           class="card-img-top image-fluid"
-          style="max-height: 250px;"
+          style="max-height: 250px"
         />
         <div class="card-body">
           <h5 class="card-title">{{ book.name }}</h5>
@@ -63,7 +62,10 @@
     </div>
 
     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-      <div class="form-card gradient-custom text-white" style="border-radius: 2rem">
+      <div
+        class="form-card gradient-custom text-white"
+        style="border-radius: 2rem"
+      >
         <h3>Borrow Book Online</h3>
         <form method="POST" enctype="multipart/form-data">
           {% csrf_token %} {{ form|crispy }}
@@ -72,7 +74,6 @@
         </form>
       </div>
     </div>
-
   </div>
 </div>
 

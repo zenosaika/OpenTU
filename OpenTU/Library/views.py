@@ -23,6 +23,7 @@ TIME_SLOTS = {
     '15': '22:30 - 23:30',
 }
 
+@login_required
 def library_request(request):
     context = {}
 
@@ -83,6 +84,7 @@ def borrow(request, id):
         }
         return render(request, 'Library/borrow.html', context)
 
+@login_required
 def book_room(request, id):
     if request.method == 'POST':
         form = RoomTransactionForm(request.POST)

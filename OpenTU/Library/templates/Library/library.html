@@ -24,9 +24,9 @@
 </style>
 
 <div class="container pt-4 d-flex justify-content-center">
-  <div class="row" style="width: 80%;">
+  <div class="row" style="width: 80%">
     <h3 class="pb-2">Available Book</h3>
- 
+
     {% for book in books %}
     <div class="col-lg-4 mb-4">
       <div class="card">
@@ -34,7 +34,7 @@
           src="{{ book.image.url }}"
           alt=""
           class="card-img-top image-fluid"
-          style="max-height: 250px;"
+          style="max-height: 250px"
         />
         <div class="card-body">
           <h5 class="card-title">{{ book.name }}</h5>
@@ -42,7 +42,9 @@
             Lorem ipsum dolor sit amet consectetur, adipisicing elit.
           </p>
           {% if book.is_available %}
-          <a href="/borrow/{{ book.id }}" class="btn btn-outline-success btn-sm">Borrow this book</a>
+          <a href="/borrow/{{ book.id }}" class="btn btn-outline-success btn-sm"
+            >Borrow this book</a
+          >
           {% else %}
           <p class="text-muted">This book is not available.</p>
           {% endif %}
@@ -50,13 +52,11 @@
       </div>
     </div>
     {% endfor %}
-
   </div>
-
 </div>
 
 <div class="container d-flex justify-content-center">
-  <div class="row" style="width: 80%;">
+  <div class="row" style="width: 80%">
     <h3 class="pb-2">Study Room</h3>
 
     {% for room in rooms %}
@@ -66,7 +66,7 @@
           src="{{ room.image.url }}"
           alt=""
           class="card-img-top image-fluid"
-          style="height: 250px;"
+          style="height: 250px"
         />
         <div class="card-body">
           <h5 class="card-title">{{ room.name }}</h5>
@@ -74,7 +74,11 @@
             Lorem ipsum dolor sit amet consectetur, adipisicing elit.
           </p>
           {% if room.is_available %}
-          <a href="/room_booking/{{ room.id }}" class="btn btn-outline-success btn-sm">Book this room</a>
+          <a
+            href="/room_booking/{{ room.id }}"
+            class="btn btn-outline-success btn-sm"
+            >Book this room</a
+          >
           {% else %}
           <p class="text-muted">This room is not available.</p>
           {% endif %}
@@ -82,13 +86,11 @@
       </div>
     </div>
     {% endfor %}
-
   </div>
-
 </div>
 
 <div class="container d-flex justify-content-center">
-  <div class="row" style="width: 80%;">
+  <div class="row" style="width: 80%">
     <h3 class="pb-2">Your Booking History</h3>
 
     {% for h in history %}
@@ -98,26 +100,28 @@
           src="{{ h.image.url }}"
           alt=""
           class="card-img-top image-fluid"
-          style="height: 250px;"
+          style="height: 250px"
         />
         <div class="card-body">
           <h5 class="card-title">{{ h.name }}</h5>
 
-            <span class="text-muted">Create : {{ h.create_date }}</span></br>
-            <span class="text-muted">{{ h.info }}</span>
+          <span class="text-muted">Create : {{ h.create_date }}</span><br />
+          <span class="text-muted">{{ h.info }}</span>
 
           {% if h.is_active %}
-          <p class="text-muted">Status : <span class="text-success">Active</span></p>
+          <p class="text-muted">
+            Status : <span class="text-success">Active</span>
+          </p>
           {% else %}
-          <p class="text-muted">Status : <span class="text-warning">Closed</span></p>
+          <p class="text-muted">
+            Status : <span class="text-warning">Closed</span>
+          </p>
           {% endif %}
         </div>
       </div>
     </div>
     {% endfor %}
-
   </div>
-
 </div>
 
 {% endblock %}

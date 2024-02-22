@@ -117,22 +117,22 @@
 <div class="container d-flex justify-content-center">
   <div class="row py-5" style="width: 90%">
     <div class="col">
-    <h3 class="pb-3">Course Schedule</h3>
-    <table class="table shadowbox ms-2" style="max-width: 700px;">
-      <tbody>
-        {% for day in days %}
-        <tr>
-          <th style="width: 65px !important">{{ day.day }}</th>
-          {% for slot in day.slot %} {% if slot %}
-          <td><div class="line {{slot.color}}">&nbsp;</div></td>
-          {% else %}
-          <td>&nbsp;</td>
-          {% endif %} {% endfor %}
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+      <h3 class="pb-3">Course Schedule</h3>
+      <table class="table shadowbox ms-2" style="max-width: 700px">
+        <tbody>
+          {% for day in days %}
+          <tr>
+            <th style="width: 65px !important">{{ day.day }}</th>
+            {% for slot in day.slot %} {% if slot %}
+            <td><div class="line {{slot.color}}">&nbsp;</div></td>
+            {% else %}
+            <td>&nbsp;</td>
+            {% endif %} {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
 
     <h3 class="pt-4">Enrolled Courses</h3>
     <div class="row pt-3">
@@ -155,28 +155,26 @@
       {% endfor %}
     </div>
 
-
-
     <h3 class="pt-2">Examination</h3>
     <div class="row pt-3">
-        <table class="table shadowbox ms-2" style="max-width: 700px;">
-          <thead>
-            <th>&nbsp;</th>
-            <th>Midterm</th>
-            <th>Final</th>
-          </thead>
-          <tbody>
-            {% for exam in exams %}
-            <tr>
-              <th>{{ exam.course_name }}</th>
-              <td>{{ exam.midterm }}</td>
-              <td>{{ exam.final }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
+      <table class="table shadowbox ms-2" style="max-width: 700px">
+        <thead>
+          <th>&nbsp;</th>
+          <th>Midterm</th>
+          <th>Final</th>
+        </thead>
+        <tbody>
+          {% for exam in exams %}
+          <tr>
+            <th>{{ exam.course_name }}</th>
+            <td>{{ exam.midterm }}</td>
+            <td>{{ exam.final }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>
 
 {% endblock %}

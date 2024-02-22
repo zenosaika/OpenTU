@@ -1,5 +1,4 @@
-{% extends "OpenTU/header.html" %} 
-{% block content %}
+{% extends "OpenTU/header.html" %} {% block content %}
 
 <style>
   .card-custom {
@@ -75,10 +74,17 @@
       </h4>
       <p class="card-text">{{ student.student_id }}</p>
     </div>
-    <div class="card-footer pb-3" style="background: inherit; border-color: inherit">
-        <div class="card-custom-qrcode">
-            <img class="img-fluid" src="data:image/jpeg;base64,{{ qrcode }}" alt="QRCODE" />
-        </div>
+    <div
+      class="card-footer pb-3"
+      style="background: inherit; border-color: inherit"
+    >
+      <div class="card-custom-qrcode">
+        <img
+          class="img-fluid"
+          src="data:image/jpeg;base64,{{ qrcode }}"
+          alt="QRCODE"
+        />
+      </div>
     </div>
   </div>
 </div>
