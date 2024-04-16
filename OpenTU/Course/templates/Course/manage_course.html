@@ -1,4 +1,5 @@
-{% extends "OpenTU/header.html" %} {% block content %}
+{% extends "OpenTU/header.html" %} 
+{% block content %}
 
 <style>
   .is-schedule-page {
@@ -31,7 +32,7 @@
   }
 
   .bg-orange {
-    background-color: #e95601 !important;
+    background-color: #e6671d !important;
   }
 
   .bg-green {
@@ -47,7 +48,7 @@
   }
 
   .bg-purple {
-    background-color: #9d60ff !important;
+    background-color: #c2528a !important;
   }
 
   .bg-lightred {
@@ -116,43 +117,23 @@
 
 <div class="container d-flex justify-content-center">
   <div class="row py-5" style="width: 90%">
-    <div class="col">
-      <h3 class="pb-3">Course Schedule</h3>
-      <table class="table shadowbox ms-2" style="max-width: 700px">
-        <tbody>
-          {% for day in days %}
-          <tr>
-            <th style="width: 65px !important">{{ day.day }}</th>
-            {% for slot in day.slot %} {% if slot %}
-            <td><div class="line {{slot.color}}">&nbsp;</div></td>
-            {% else %}
-            <td>&nbsp;</td>
-            {% endif %} {% endfor %}
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-
-    <div class="d-flex">
       <h3 class="pt-4">Enrolled Courses</h3>
-    <a href="/manage_course" class="logo d-flex ps-2 pt-3">
-      <i class="bi bi-plus-circle-fill" style="font-size: 25px"></i>
-    </a>
-    </div>
     <div class="row pt-3">
       {% for course in enrolled_courses %}
       <div class="col-md-4 col-xl-3">
-        <div class="card order-card {{ course.color }}">
+        <div class="card order-card bg-green">
           <div class="card-block">
-            <h6 class="mb-20">{{ course.full_name }}</h6>
-            <h2 class="text-right">
-              <span>{{ course.short_name }}</span>
-            </h2>
+              <h6 class="mb-20">{{ course.full_name }}</h6>
+              <div class="d-flex">
+              <h2 class="text-right">
+                <span>{{ course.short_name }}</span>
+              </h2>
+              <a href="/unenroll/{{ course.id }}" class="ps-2 mt-0">
+                <i class="bi bi-trash-fill" style="font-size: 25px; color: black"></i>
+              </a>
+            </div>
             <p class="mb-0">
-              {{ course.schedule }}<span class="f-right"
-                >{{ course.section }}</span
-              >
+              {{ course.schedule }}<span class="f-right">{{ course.section }}</span>
             </p>
           </div>
         </div>
@@ -160,25 +141,30 @@
       {% endfor %}
     </div>
 
-    <h3 class="pt-2">Examination</h3>
+    <h3 class="pt-4">Available Courses</h3>
     <div class="row pt-3">
-      <table class="table shadowbox ms-2" style="max-width: 700px">
-        <thead>
-          <th>&nbsp;</th>
-          <th>Midterm</th>
-          <th>Final</th>
-        </thead>
-        <tbody>
-          {% for exam in exams %}
-          <tr>
-            <th>{{ exam.course_name }}</th>
-            <td>{{ exam.midterm }}</td>
-            <td>{{ exam.final }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+      {% for course in unenrolled_courses %}
+      <div class="col-md-4 col-xl-3">
+        <div class="card order-card bg-orange">
+          <div class="card-block">
+              <h6 class="mb-20">{{ course.full_name }}</h6>
+              <div class="d-flex">
+              <h2 class="text-right">
+                <span>{{ course.short_name }}</span>
+              </h2>
+              <a href="/enroll/{{ course.id }}" class="ps-2 mt-0">
+                <i class="bi bi-plus-circle-fill" style="font-size: 25px; color: black"></i>
+              </a>
+            </div>
+            <p class="mb-0">
+              {{ course.schedule }}<span class="f-right">{{ course.section }}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
+
   </div>
 </div>
 

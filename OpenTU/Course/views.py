@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from User.models import Student
+from .models import Course
+from django.shortcuts import get_object_or_404
 import datetime
 
 DAYS_OF_WEEK = {
@@ -80,3 +82,37 @@ def schedule_request(request):
     context['exams'] = exams
 
     return render(request, "Course/schedule.html", context)
+
+@login_required
+def manage_course_request(request):
+    student = Student.objects.filter(user=request.user)
+    context = {}
+    id_to_remove = []
+    if student:
+        enrolled_courses = student[0].enrolled_courses.all()
+        for course in enrolled_courses:
+            id_to_remove.append(course.id)
+            course.schedule = f"{DAYS_OF_WEEK[course.class_day]} | {course.class_start.strftime('%H:%M')} - {course.class_finish.strftime('%H:%M')}"
+        context['enrolled_courses'] = enrolled_courses
+
+    all_courses = Course.objects.all()
+    unenrolled_courses = []
+    for c in all_courses:
+        if c.id not in id_to_remove:
+            unenrolled_courses.append(c)
+
+    context['unenrolled_courses'] = unenrolled_courses
+
+    return render(request, 'Course/manage_course.html', context)
+
+@login_required
+def unenroll_request(request, id):
+    student = get_object_or_404(Student, user=request.user)
+    student.enrolled_courses.remove(student.enrolled_courses.get(pk=id))
+    return redirect('/schedule')
+
+@login_required
+def enroll_request(request, id):
+    student = get_object_or_404(Student, user=request.user)
+    student.enrolled_courses.add(get_object_or_404(Course, pk=id))
+    return redirect('/schedule')
