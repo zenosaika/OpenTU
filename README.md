@@ -8,3 +8,5 @@
 <img src="https://github.com/zenosaika/OpenTU/blob/main/presentation/3.jpg"><br>
 <img src="https://github.com/zenosaika/OpenTU/blob/main/presentation/4.jpg"><br>
 <img src="https://github.com/zenosaika/OpenTU/blob/main/presentation/13.jpg"><br>
+
+### End
