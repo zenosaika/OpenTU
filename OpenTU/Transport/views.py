@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Station, Bus
-from datetime import datetime
+from datetime import datetime, timedelta
 import random
 
 def transport_request(request):
@@ -37,6 +37,6 @@ def transport_request(request):
     context['green_stations'] = green_stations
     context['purple_stations'] = purple_stations
 
-    context['time'] = datetime.now().strftime("%H:%M:%S")
+    context['time'] = (datetime.now()+timedelta(hours=7)).strftime("%H:%M:%S")
 
     return render(request, 'Transport/transport.html', context)
