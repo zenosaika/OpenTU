@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from User.models import Student
 from User.forms import StudentForm
 import datetime
-
+from django.shortcuts import get_object_or_404
 
 @login_required
 def dashboard_request(request):
@@ -30,11 +30,11 @@ def dashboard_request(request):
 
 @login_required
 def edit_info(request):
+    student = get_object_or_404(Student, user=request.user)
     if request.method == 'POST':
         form = StudentForm(request.POST, request.FILES)
         if form.is_valid():
             form = form.save(commit=False)
-            student = Student.objects.get(user=request.user)
             if student:
                 student.first_name = form.first_name
                 student.last_name = form.last_name
@@ -45,5 +45,5 @@ def edit_info(request):
 
             return redirect('/dashboard')
     else:
-        context = {'form': StudentForm()}
+        context = {'form': StudentForm(instance=student)}
         return render(request, 'Dashboard/edit_info.html', context)
